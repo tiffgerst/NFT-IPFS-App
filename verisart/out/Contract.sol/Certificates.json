@@ -1,0 +1,58 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220f9e3c15406bebe993fa592434d94faf27df398cb30d25f4c99efd931daacebb764736f6c634300080f0033",
+    "sourceMap": "65:28:8:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x6080604052600080fdfea2646970667358221220f9e3c15406bebe993fa592434d94faf27df398cb30d25f4c99efd931daacebb764736f6c634300080f0033",
+    "sourceMap": "65:28:8:-:0;;;;;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "ast": {
+    "absolutePath": "src/Contract.sol",
+    "id": 23249,
+    "exportedSymbols": {
+      "Certificates": [
+        23248
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "39:55:8",
+    "nodes": [
+      {
+        "id": 23247,
+        "nodeType": "PragmaDirective",
+        "src": "39:24:8",
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".13"
+        ]
+      },
+      {
+        "id": 23248,
+        "nodeType": "ContractDefinition",
+        "src": "65:28:8",
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "Certificates",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          23248
+        ],
+        "name": "Certificates",
+        "nameLocation": "74:12:8",
+        "scope": 23249,
+        "usedErrors": []
+      }
+    ],
+    "license": "UNLICENSED"
+  },
+  "id": 8
+}
