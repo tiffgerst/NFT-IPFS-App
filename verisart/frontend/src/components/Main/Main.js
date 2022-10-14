@@ -11,7 +11,7 @@ const projectId = '2FoHLw3Z83eOruuqk1OB3245oGY';
 const projectSecret = '3c4a631dc43de1bd574b239e8118a4fc';
 const authorization =
   'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
-const contractAddress = '0xeBA15F6A62FB2dC54829Ebc839B9Dcc3f90e1354';
+const contractAddress = '0xBC2fA093400FAbE53Bb43A95616155152eC4aAD5';
 const contractABI = json.abi;
 const ipfs = create({
   host:'ipfs.infura.io',
