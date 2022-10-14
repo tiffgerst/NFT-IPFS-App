@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import styles from "./main.module.scss";
 import { Buffer } from "buffer";
 import { create } from "ipfs-http-client";
@@ -11,7 +11,7 @@ const projectId = '2FoHLw3Z83eOruuqk1OB3245oGY';
 const projectSecret = '3c4a631dc43de1bd574b239e8118a4fc';
 const authorization =
   'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
-const contractAddress = '0xBC2fA093400FAbE53Bb43A95616155152eC4aAD5';
+const contractAddress = '0xeBA15F6A62FB2dC54829Ebc839B9Dcc3f90e1354';
 const contractABI = json.abi;
 const ipfs = create({
   host:'ipfs.infura.io',
@@ -24,6 +24,10 @@ const ipfs = create({
 });
 
 export default function Main() {
+  async function refreshPage() {
+    await delay(3000);
+    window.location.reload(false);
+  }
   const contract = new Contract(contractAddress, contractABI);
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
@@ -36,6 +40,9 @@ export default function Main() {
   };
   const {send,state} = useContractFunction(contract, "createCertificate");
 
+  const delay = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
   const uploadHandler = async () => {
     if(title&&year&&artist){
     try {
@@ -53,21 +60,38 @@ export default function Main() {
       const url = `https://verisart-tiff.infura-ipfs.io/ipfs/${nftURI.path}`;
       console.log(url);
       await send(url);
-      setWorked(true);
-      console.log(state.status);
+      console.log(state.status)
+      
     } catch (error) {
       console.log("Error uploading file: ", error);
     }}
   };
+  useEffect(() => {
+    if (state.status == 'Mining') {
+      setYear()
+    setArtist("")
+    setTitle("")
+    setImage(null)
+    setWorked(true);
+    refreshPage();
+    
+    }
+  }, [state])
 
+  useEffect(() => {
+    if (state.status == 'Success') {
+      refreshPage()
+    }
+  }, [state])
   return (
     <div className={styles.container}>
       <div className={styles.input}>
       {worked? (
-          <Confetti width={650} height={500} recycle={false} />
+          <Confetti className={styles.confetti} width={800} height={500} recycle={false} />
         ) : (
           <></>
         )}
+       
         <label className={styles.label}>
           Title:
           <input

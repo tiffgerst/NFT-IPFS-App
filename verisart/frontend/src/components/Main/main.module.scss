@@ -4,6 +4,7 @@
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  max-height:100%;
   h1 {
     color: white;
   }
@@ -116,4 +117,7 @@ margin: 10px;
   max-width: 50%;
   position: relative;
   left: 80px;
+}
+.confetti{
+  margin: -200px;
 }
